@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace FastCore.DbMigrations
 {
@@ -11,6 +12,7 @@ namespace FastCore.DbMigrations
         static void Main(string[] args)
         {
             CreateHostBuilder(args).RunConsoleAsync();
+            Console.ReadKey();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,7 +23,7 @@ namespace FastCore.DbMigrations
                         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
                         .Build();
 
-                  var connectionString = config.GetConnectionString("SRMConnection");
+                  var connectionString = config.GetConnectionString("FastCoreConnection");
                   services.AddDbContext<FastCoreContext>(options => options.UseSqlServer(connectionString));
 
                   services.AddHostedService<DbMigratorHostedService>();

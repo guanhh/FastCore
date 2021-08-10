@@ -11,6 +11,7 @@ namespace FastCore.Model
     [Table("Base_FastUsers")]
     public class FastUser
     {
+        [Key]
         [Required]
         public Guid UserId { get; set; }
 

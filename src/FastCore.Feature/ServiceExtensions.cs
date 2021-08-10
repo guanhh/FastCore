@@ -3,7 +3,9 @@ using FastCore.EFCore.SqlServer;
 using FastCore.HealthCheck;
 using FastCore.Redis;
 using FastCore.Security;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,10 +49,32 @@ namespace SRM.HttpApi.Extensions
 
         public static void UseFastCore(this IApplicationBuilder app)
         {
+            //app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseHealthChecks("/health", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+
             app.UseCors(CorsPolicy);
 
             app.UseAuditLog();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+
+                endpoints.MapHealthChecksUI();
+            });
         }
+
+
 
     }
 }

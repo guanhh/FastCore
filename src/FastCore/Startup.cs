@@ -45,8 +45,6 @@ namespace FastCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseExceptionHandler(HandleError);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -54,22 +52,9 @@ namespace FastCore
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FastCore v1"));
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseFastCore();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-
-                endpoints.MapHealthChecksUI();
-            });
+            app.UseExceptionHandler(HandleError);
         }
+
 
         private void HandleError(IApplicationBuilder builder)
         {

@@ -12,7 +12,7 @@ namespace FastCore.Security
         {
             services.Configure<JwtOption>(configuration.GetSection("JwtOptions"));
 
-            var jwtOption = configuration.GetValue<JwtOption>("JwtOptions");
+            var jwtOption = configuration.GetSection("JwtOptions").Get<JwtOption>();
 
             services.AddAuthentication(opt =>
             {
