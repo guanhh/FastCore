@@ -43,8 +43,12 @@ namespace SRM.HttpApi.Extensions
 
             services.ConfigureHealthChecks(configuration);
 
+            //services.AddHealthChecksUI()
+            //        .AddSqlServerStorage(configuration.GetConnectionString("HealthCheckConnection"));
+
             services.AddHealthChecksUI()
-                    .AddSqlServerStorage(configuration.GetConnectionString("HealthCheckConnection"));
+                  .AddInMemoryStorage();
+
         }
 
         public static void UseFastCore(this IApplicationBuilder app)
@@ -53,7 +57,7 @@ namespace SRM.HttpApi.Extensions
 
             app.UseRouting();
 
-            app.UseHealthChecks("/health", new HealthCheckOptions()
+            app.UseHealthChecks("/healthz", new HealthCheckOptions
             {
                 Predicate = _ => true,
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
@@ -69,7 +73,6 @@ namespace SRM.HttpApi.Extensions
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-
                 endpoints.MapHealthChecksUI();
             });
         }

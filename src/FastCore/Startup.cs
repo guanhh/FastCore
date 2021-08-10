@@ -53,6 +53,8 @@ namespace FastCore
             }
 
             app.UseExceptionHandler(HandleError);
+
+            app.UseFastCore();
         }
 
 

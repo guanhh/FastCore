@@ -23,11 +23,11 @@ namespace FastCore.HealthCheck
                             }
                         }
                     });
-                    //.AddHangfire(option =>
-                    //{
-                    //    option.MaximumJobsFailed = 3;
-                    //    option.MinimumAvailableServers = 1;
-                    //});
+            //.AddHangfire(option =>
+            //{
+            //    option.MaximumJobsFailed = 3;
+            //    option.MinimumAvailableServers = 1;
+            //});
         }
     }
 }
