@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.SqlServer.Storage" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastCore.Abstract\FastCore.Abstract.csproj" />
+    <ProjectReference Include="..\FastCore.Auditing\FastCore.Auditing.csproj" />
+    <ProjectReference Include="..\FastCore.AutoMapper\FastCore.AutoMapper.csproj" />
+    <ProjectReference Include="..\FastCore.Base\FastCore.Base.csproj" />
+    <ProjectReference Include="..\FastCore.EFCore.SqlServer\FastCore.EFCore.SqlServer.csproj" />
+    <ProjectReference Include="..\FastCore.Hangfire\FastCore.Hangfire.csproj" />
+    <ProjectReference Include="..\FastCore.HealthCheck\FastCore.HealthCheck.csproj" />
+    <ProjectReference Include="..\FastCore.MongoDB\FastCore.MongoDB.csproj" />
+    <ProjectReference Include="..\FastCore.NLog\FastCore.NLog.csproj" />
+    <ProjectReference Include="..\FastCore.Redis\FastCore.Redis.csproj" />
+    <ProjectReference Include="..\FastCore.Security\FastCore.Security.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+﻿using System.Security.Claims;
+
+namespace FastCore.Abstract
+{
+    public interface ICurrentUser
+    {
+        bool IsAuthenticated { get; }
+
+        int UserId { get; }
+
+        string UserName { get; }
+
+
+        Claim FindClaim(string claimType);
+
+        Claim[] FindClaims(string claimType);
+
+        Claim[] GetAllClaims();
+    }
+}

@@ -1,16 +1,15 @@
+using FastCore.Extension;
+using FastCore.Model.Result;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SRM.HttpApi.Extensions;
+using System.Text.Json;
 
 namespace FastCore
 {
@@ -26,17 +25,28 @@ namespace FastCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //基础功能注入
+            services.ConfigureFastCoreService(Configuration);
 
+            //扩展服务注入
+            services.ConfigureExtensionService(Configuration);
+
+            services.AddRouting(options => options.LowercaseUrls = true);
+            //
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FastCore", Version = "v1" });
             });
+
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseExceptionHandler(HandleError);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -48,12 +58,38 @@ namespace FastCore
 
             app.UseRouting();
 
+            app.UseFastCore();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapHealthChecksUI();
             });
         }
+
+        private void HandleError(IApplicationBuilder builder)
+        {
+            builder.Run(async context =>
+            {
+                context.Response.StatusCode = 500;
+                context.Response.ContentType = "application/json";
+
+                var error = context.Features.Get<IExceptionHandlerFeature>();
+                if (error != null)
+                {
+                    await context.Response.WriteAsync(
+                        JsonSerializer.Serialize(new ResultMsg<string>()
+                        {
+                            code = (int)StatusCode.Error,
+                            message = error.Error.Message
+                        }));
+                }
+            });
+        }
+
     }
 }

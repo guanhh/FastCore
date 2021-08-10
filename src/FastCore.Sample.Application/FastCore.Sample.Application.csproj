@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FastCore.Base\FastCore.Base.csproj" />
+    <ProjectReference Include="..\FastCore.Sample.Abstract\FastCore.Sample.Abstract.csproj" />
+  </ItemGroup>
+
 </Project>

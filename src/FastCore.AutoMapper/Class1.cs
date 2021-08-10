@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FastCore.TestBase
+namespace FastCore.AutoMapper
 {
     public class Class1
     {
