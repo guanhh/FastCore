@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FastCore.TestBase\FastCore.TestBase.csproj" />
+    <ProjectReference Include="..\FastCore.TestBase\FastCore.TestBase.csproj" />
   </ItemGroup>
 
 </Project>

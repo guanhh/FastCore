@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCore.Extension\FastCore.Extension.csproj" />
+    <ProjectReference Include="..\..\extension\FastCore.Extension\FastCore.Extension.csproj" />
     <ProjectReference Include="..\FastCore.Feature\FastCore.Feature.csproj" />
   </ItemGroup>
 

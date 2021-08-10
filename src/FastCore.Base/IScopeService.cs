@@ -2,7 +2,7 @@
 
 namespace FastCore.Base
 {
-    public class IScopeService
+    public interface IScopeService
     {
     }
 }

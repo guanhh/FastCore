@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\FastCore.EFCore.SqlServer\FastCoreContext.cs" Link="FastCoreContext.cs" />
+    <Compile Include="..\..\src\FastCore.EFCore.SqlServer\FastCoreContext.cs" Link="FastCoreContext.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\FastCore\appsettings.json" Link="appsettings.json">
+    <Content Include="..\..\src\FastCore\appsettings.json" Link="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCore.Model\FastCore.Model.csproj" />
+    <ProjectReference Include="..\..\src\FastCore.Model\FastCore.Model.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

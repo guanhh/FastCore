@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCore.Abstract\FastCore.Abstract.csproj" />
     <ProjectReference Include="..\FastCore.Auditing\FastCore.Auditing.csproj" />
     <ProjectReference Include="..\FastCore.AutoMapper\FastCore.AutoMapper.csproj" />
     <ProjectReference Include="..\FastCore.Base\FastCore.Base.csproj" />

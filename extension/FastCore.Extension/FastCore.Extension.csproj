@@ -10,8 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCore.Base\FastCore.Base.csproj" />
-    <ProjectReference Include="..\FastCore.Sample.Abstract\FastCore.Sample.Abstract.csproj" />
+    <ProjectReference Include="..\..\extension\FastCore.Abstract\FastCore.Abstract.csproj" />
+    <ProjectReference Include="..\..\extension\FastCore.Sample.Abstract\FastCore.Sample.Abstract.csproj" />
+    <ProjectReference Include="..\..\src\FastCore.Base\FastCore.Base.csproj" />
   </ItemGroup>
 
 </Project>

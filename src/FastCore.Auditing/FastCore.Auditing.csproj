@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FastCore.Abstract\FastCore.Abstract.csproj" />
+    <ProjectReference Include="..\..\extension\FastCore.Abstract\FastCore.Abstract.csproj" />
     <ProjectReference Include="..\FastCore.EFCore.SqlServer\FastCore.EFCore.SqlServer.csproj" />
   </ItemGroup>
   
