@@ -12,7 +12,6 @@
     <ProjectReference Include="..\FastCore.Hangfire\FastCore.Hangfire.csproj" />
     <ProjectReference Include="..\FastCore.HealthCheck\FastCore.HealthCheck.csproj" />
     <ProjectReference Include="..\FastCore.MongoDB\FastCore.MongoDB.csproj" />
-    <ProjectReference Include="..\FastCore.NLog\FastCore.NLog.csproj" />
     <ProjectReference Include="..\FastCore.Redis\FastCore.Redis.csproj" />
     <ProjectReference Include="..\FastCore.Security\FastCore.Security.csproj" />
   </ItemGroup>

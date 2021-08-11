@@ -1,11 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>guanhh</Authors>
+    <Company>FastCore</Company>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="nlog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.13.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,9 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\FastCore.NLog\nlog.config" Link="nlog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="nlog.config" />
   </ItemGroup>
 
 </Project>

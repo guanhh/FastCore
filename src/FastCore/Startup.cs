@@ -1,3 +1,4 @@
+using FastCore.Auditing;
 using FastCore.Extension;
 using FastCore.Feature;
 using FastCore.Model.Result;
@@ -84,7 +85,31 @@ namespace FastCore
 
             app.UseExceptionHandler(HandleError);
 
+            //app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            //app.UseHealthChecks("/healthz", new HealthCheckOptions
+            //{
+            //    Predicate = _ => true,
+            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            //});
+
+            app.UseCors(StringConstants.CorsPolicy);
+
+            app.UseAuditLog();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseFastCoreFeature();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                //healthcheck
+                //endpoints.MapHealthChecksUI();
+            });
         }
 
 
