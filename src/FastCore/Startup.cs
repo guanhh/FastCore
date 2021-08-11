@@ -1,4 +1,5 @@
 using FastCore.Extension;
+using FastCore.Feature;
 using FastCore.Model.Result;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using SRM.HttpApi.Extensions;
 using System.Text.Json;
 
 namespace FastCore
@@ -26,7 +26,7 @@ namespace FastCore
         public void ConfigureServices(IServiceCollection services)
         {
             //基础功能注入
-            services.AddFastCoreService(Configuration);
+            services.AddFastCoreFeatureService(Configuration);
 
             //扩展服务注入
             services.AddExtensionService(Configuration);
@@ -83,7 +83,7 @@ namespace FastCore
 
             app.UseExceptionHandler(HandleError);
 
-            app.UseFastCore();
+            app.UseFastCoreFeature();
         }
 
 
