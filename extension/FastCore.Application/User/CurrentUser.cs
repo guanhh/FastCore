@@ -1,5 +1,6 @@
 ﻿using FastCore.Abstract;
 using Microsoft.AspNetCore.Http;
+using System;
 using System.Linq;
 using System.Security.Claims;
 
@@ -18,7 +19,7 @@ namespace FastCore.Application
 
         public bool IsAuthenticated => _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated;
 
-        public int UserId => int.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        public Guid UserId => Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
         public string UserName => FindClaim(ClaimTypes.Name).Value;
 

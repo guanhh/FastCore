@@ -19,7 +19,7 @@ namespace FastCore.Model
         [MaxLength(64)]
         public string TenantName { get; set; }
 
-        public int? UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         [MaxLength(64)]
         public string UserName { get; set; }

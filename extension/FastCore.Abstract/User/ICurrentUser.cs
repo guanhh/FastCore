@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 
 namespace FastCore.Abstract
 {
@@ -6,7 +7,7 @@ namespace FastCore.Abstract
     {
         bool IsAuthenticated { get; }
 
-        int UserId { get; }
+        Guid UserId { get; }
 
         string UserName { get; }
 

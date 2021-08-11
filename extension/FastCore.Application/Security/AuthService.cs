@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FastCore.Application.Security
 {
-    public class AuthService : IAuthService, ISingleService
+    public class AuthService : IAuthService, IScopeService
     {
 
         private readonly ICache _cache;

@@ -1,4 +1,5 @@
 ﻿using FastCore.Abstract;
+using System;
 
 namespace FastCore.Application
 {
@@ -10,7 +11,7 @@ namespace FastCore.Application
             return currentUser.FindClaim(claimType)?.Value;
         }
 
-        public static int GetId(this ICurrentUser currentUser)
+        public static Guid GetId(this ICurrentUser currentUser)
         {
             return currentUser.UserId;
         }

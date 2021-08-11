@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FastCore.Application
 {
-    public class UserService : IUserService, ISingleService
+    public class UserService : IUserService, IScopeService
     {
         private readonly FastCoreContext _dbContext;
 
