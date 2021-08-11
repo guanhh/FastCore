@@ -17,4 +17,10 @@
     <Folder Include="Controllers\Extension\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\FastCore.NLog\nlog.config" Link="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

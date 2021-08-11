@@ -22,12 +22,12 @@ namespace FastCore.HealthCheck
                                 option.AddHost(ip, 3000);
                             }
                         }
+                    })
+                    .AddHangfire(option =>
+                    {
+                        option.MaximumJobsFailed = 3;
+                        option.MinimumAvailableServers = 1;
                     });
-            //.AddHangfire(option =>
-            //{
-            //    option.MaximumJobsFailed = 3;
-            //    option.MinimumAvailableServers = 1;
-            //});
         }
     }
 }

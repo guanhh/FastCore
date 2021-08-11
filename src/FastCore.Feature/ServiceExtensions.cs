@@ -1,5 +1,6 @@
 ﻿using FastCore.Auditing;
 using FastCore.EFCore.SqlServer;
+using FastCore.Hangfire;
 using FastCore.HealthCheck;
 using FastCore.Redis;
 using FastCore.Security;
@@ -41,6 +42,7 @@ namespace SRM.HttpApi.Extensions
             services.ConfigureCors();
             services.ConfigureJwt(configuration);
 
+            //healthcheck
             services.ConfigureHealthChecks(configuration);
 
             //services.AddHealthChecksUI()
@@ -48,6 +50,9 @@ namespace SRM.HttpApi.Extensions
 
             services.AddHealthChecksUI()
                   .AddInMemoryStorage();
+
+            //hangfire
+            services.ConfigureHangfire(configuration);
 
         }
 
@@ -70,9 +75,12 @@ namespace SRM.HttpApi.Extensions
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseHangfire();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //healthcheck
                 endpoints.MapHealthChecksUI();
             });
         }
