@@ -25,12 +25,12 @@ namespace FastCore.Application
             throw new NotImplementedException();
         }
 
-        public async Task<ResultMsg<int>> UserAddAsync(FastUser userinfo)
+        public async Task<ResultMsg<int>> AddUserAsync(FastUser userinfo)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ResultMsg<int>> UserEditAsync(FastUser userinfo)
+        public async Task<ResultMsg<int>> EditUserAsync(FastUser userinfo)
         {
 
             throw new NotImplementedException();
@@ -76,7 +76,7 @@ namespace FastCore.Application
             throw new NotImplementedException();
         }
 
-        public async Task<ResultMsg<Data<List<UserInfoListResp>>>> UserInfoListAsync(int page, int limit)
+        public async Task<ResultMsg<Data<List<UserInfoListResp>>>> UserListAsync(int page, int limit)
         {
             throw new NotImplementedException();
         }

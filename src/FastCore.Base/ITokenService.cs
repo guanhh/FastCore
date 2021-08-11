@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace FastCore.Security
+namespace FastCore.Base
 {
     public interface ITokenService
     {

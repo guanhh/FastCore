@@ -5,7 +5,9 @@
     {
         Success = 200, //请求(或处理)成功
 
-        Error = 500, //内部请求出错
+        InternalError = 500, //内部请求出错
+
+        Error = 404,
     }
 
 }

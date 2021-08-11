@@ -9,13 +9,13 @@ namespace FastCore.Abstract
     public interface IUserService
     {
 
-        Task<ResultMsg<int>> UserAddAsync(FastUser userinfo);
+        Task<ResultMsg<int>> AddUserAsync(FastUser userinfo);
 
-        Task<ResultMsg<int>> UserEditAsync(FastUser userinfo);
+        Task<ResultMsg<int>> EditUserAsync(FastUser userinfo);
 
         Task<ResultMsg<int>> ModifyPasswordAsync(Guid userId, ModifyPasswordReq modifyPasswordReq);
 
-        Task<ResultMsg<Data<List<UserInfoListResp>>>> UserInfoListAsync(int page, int limit);
+        Task<ResultMsg<Data<List<UserInfoListResp>>>> UserListAsync(int page, int limit);
 
         Task<ResultMsg<int>> EnableUserAsync(Guid UserId);
 

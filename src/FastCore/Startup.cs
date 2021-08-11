@@ -71,7 +71,7 @@ namespace FastCore
                     await context.Response.WriteAsync(
                         JsonSerializer.Serialize(new ResultMsg<string>()
                         {
-                            code = (int)StatusCode.Error,
+                            code = (int)StatusCode.InternalError,
                             message = error.Error.Message
                         }));
                 }

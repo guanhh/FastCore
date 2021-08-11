@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastCore.Redis
+namespace FastCore.Base
 {
     /// <summary>
     /// Defines a cache that can be store and get items by keys.

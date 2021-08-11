@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FastCore.Redis
+namespace FastCore.Base
 {
     public interface ICacheOptions
     {

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\FastCore.Feature\FastCore.Feature.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Extension\" />
+  </ItemGroup>
+
 </Project>
