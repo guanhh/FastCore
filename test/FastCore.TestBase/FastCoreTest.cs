@@ -1,7 +1,7 @@
 ﻿using FastCore.Extension;
+using FastCore.Feature;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SRM.HttpApi.Extensions;
 using System;
 
 namespace FastCore.TestBase
@@ -24,7 +24,7 @@ namespace FastCore.TestBase
 
             //
             //基础功能注入
-            _services.AddFastCoreService(_configuration);
+            _services.AddFastCoreFeatureService(_configuration);
 
             //扩展服务注入
             _services.AddExtensionService(_configuration);

@@ -34,6 +34,7 @@ namespace FastCore
             services.AddRouting(options => options.LowercaseUrls = true);
             //
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FastCore", Version = "v1" });

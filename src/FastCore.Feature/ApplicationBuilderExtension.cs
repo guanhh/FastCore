@@ -1,8 +1,7 @@
 ﻿using FastCore.Auditing;
 using FastCore.Hangfire;
-using HealthChecks.UI.Client;
+using FastCore.HealthCheck;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace FastCore.Feature
 {
@@ -15,11 +14,11 @@ namespace FastCore.Feature
 
             app.UseRouting();
 
-            app.UseHealthChecks("/healthz", new HealthCheckOptions
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
+            //app.UseHealthChecks("/healthz", new HealthCheckOptions
+            //{
+            //    Predicate = _ => true,
+            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            //});
 
             app.UseCors(StringConstants.CorsPolicy);
 
@@ -30,11 +29,13 @@ namespace FastCore.Feature
 
             app.UseHangfire();
 
+            app.UseHealthChecksCore();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 //healthcheck
-                endpoints.MapHealthChecksUI();
+                //endpoints.MapHealthChecksUI();
             });
         }
 

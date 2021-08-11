@@ -14,7 +14,7 @@ namespace FastCore.Extension
         {
             //动态注入 IRegisterService
             var path = AppDomain.CurrentDomain.BaseDirectory;
-            var files = Directory.GetFiles(path, "*.Application.dll", SearchOption.TopDirectoryOnly).ToList();
+            var files = Directory.GetFiles(path, StringConstrants.ExtensionSearchPattern, SearchOption.TopDirectoryOnly).ToList();
 
             foreach (var file in files)
             {

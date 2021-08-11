@@ -28,6 +28,11 @@ namespace FastCore.HealthCheck
                         option.MaximumJobsFailed = 3;
                         option.MinimumAvailableServers = 1;
                     });
+
+
+            services.AddHealthChecksUI()
+            //      .AddSqlServerStorage(configuration.GetConnectionString("HealthCheckConnection"));
+                    .AddInMemoryStorage();
         }
     }
 }
