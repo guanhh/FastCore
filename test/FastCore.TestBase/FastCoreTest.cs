@@ -24,10 +24,10 @@ namespace FastCore.TestBase
 
             //
             //基础功能注入
-            _services.ConfigureFastCoreService(_configuration);
+            _services.AddFastCoreService(_configuration);
 
             //扩展服务注入
-            _services.ConfigureExtensionService(_configuration);
+            _services.AddExtensionService(_configuration);
 
             _serviceProvider = _services.BuildServiceProvider();
         }

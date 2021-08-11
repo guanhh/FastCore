@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FastCore.HealthCheck
 {
-    public static class ServiceExtensions
+    public static class ServiceCollectionExtensions
     {
-        public static void ConfigureHealthChecks(this IServiceCollection services, IConfiguration Configuration)
+        public static void AddHealthCheckService(this IServiceCollection services, IConfiguration Configuration)
         {
             services.AddHealthChecks()
                     .AddDbContextCheck<FastCoreContext>()

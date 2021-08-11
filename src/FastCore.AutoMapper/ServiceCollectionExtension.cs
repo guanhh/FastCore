@@ -2,7 +2,7 @@
 
 namespace FastCore.AutoMapper
 {
-    public class Class1
+    public static class ServiceCollectionExtension
     {
     }
 }

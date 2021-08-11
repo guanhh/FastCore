@@ -2,7 +2,7 @@
 
 namespace FastCore.MongoDB
 {
-    public class Class1
+    public class ServiceCollectionExtension
     {
     }
 }

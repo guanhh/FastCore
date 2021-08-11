@@ -26,10 +26,10 @@ namespace FastCore
         public void ConfigureServices(IServiceCollection services)
         {
             //基础功能注入
-            services.ConfigureFastCoreService(Configuration);
+            services.AddFastCoreService(Configuration);
 
             //扩展服务注入
-            services.ConfigureExtensionService(Configuration);
+            services.AddExtensionService(Configuration);
 
             services.AddRouting(options => options.LowercaseUrls = true);
             //

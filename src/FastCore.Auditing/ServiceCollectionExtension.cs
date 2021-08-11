@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FastCore.Auditing
 {
-    public static class ServiceExtensions
+    public static class ServiceCollectionExtension
     {
-        public static void ConfigureAuditLog(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAuditLog(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<AuditingOptions>(configuration.GetSection("AuditingOptions"));
 

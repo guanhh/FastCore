@@ -7,9 +7,9 @@ using System.Text;
 
 namespace FastCore.Security
 {
-    public static class ServiceExtensions
+    public static class ServiceCollectionExtensions
     {
-        public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddJwt(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JwtOption>(configuration.GetSection("JwtOptions"));
 
@@ -34,7 +34,7 @@ namespace FastCore.Security
                 };
             });
 
-            services.AddSingleton<ITokenService, TokenService>();
+            return services.AddSingleton<ITokenService, TokenService>();
         }
     }
 }

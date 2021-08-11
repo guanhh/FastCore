@@ -2,7 +2,7 @@
 
 namespace FastCore.NLog
 {
-    public class ServiceExtension
+    public class ServiceCollectionExtension
     {
     }
 }

@@ -8,9 +8,9 @@ using System.Reflection;
 
 namespace FastCore.Extension
 {
-    public static class ServiceExtensions
+    public static class ServiceCollectionExtension
     {
-        public static void ConfigureExtensionService(this IServiceCollection services, IConfiguration configuration)
+        public static void AddExtensionService(this IServiceCollection services, IConfiguration configuration)
         {
             //动态注入 IRegisterService
             var path = AppDomain.CurrentDomain.BaseDirectory;
