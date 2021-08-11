@@ -62,7 +62,7 @@ namespace FastCore.Controllers
         [Route("userinfo")]
         public async Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync()
         {
-            return await _authService.GetUserAsync(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return await _authService.GetUserAsync(System.Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
         }
 
 

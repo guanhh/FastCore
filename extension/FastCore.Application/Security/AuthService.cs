@@ -27,7 +27,7 @@ namespace FastCore.Application.Security
             _cache = cahce;
         }
 
-        public async Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(int userid)
+        public async Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(Guid userid)
         {
             throw new NotImplementedException();
         }

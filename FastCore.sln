@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastCore.TestBase", "test\F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastCore.Extension", "extension\FastCore.Extension\FastCore.Extension.csproj", "{FBAE4B3F-27C2-4993-A641-95118747AA02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastCore.Test", "test\FastCore.Test\FastCore.Test.csproj", "{257036DC-A0A5-40AE-A782-D4864B70E833}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{FBAE4B3F-27C2-4993-A641-95118747AA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBAE4B3F-27C2-4993-A641-95118747AA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBAE4B3F-27C2-4993-A641-95118747AA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{257036DC-A0A5-40AE-A782-D4864B70E833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257036DC-A0A5-40AE-A782-D4864B70E833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257036DC-A0A5-40AE-A782-D4864B70E833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257036DC-A0A5-40AE-A782-D4864B70E833}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +175,7 @@ Global
 		{449948D3-EF12-492A-8FE2-E393EC91A5DB} = {0CAA4FFA-BF00-4274-9D2E-EB7449CAD84B}
 		{FE525CA2-CAEB-418F-82B5-EA3882F2B6DE} = {81CC2A10-5874-4F30-9195-938600FD1073}
 		{FBAE4B3F-27C2-4993-A641-95118747AA02} = {B9B599AF-99E7-4C22-8BF3-F4207CE671F8}
+		{257036DC-A0A5-40AE-A782-D4864B70E833} = {81CC2A10-5874-4F30-9195-938600FD1073}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E282505-8E12-4809-BF26-0473905D2330}

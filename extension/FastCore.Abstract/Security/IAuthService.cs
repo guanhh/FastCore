@@ -1,4 +1,5 @@
 ﻿using FastCore.Model.Result;
+using System;
 using System.Threading.Tasks;
 
 namespace FastCore.Abstract.Security
@@ -11,7 +12,7 @@ namespace FastCore.Abstract.Security
 
         Task<ResultMsg<bool>> RevokeAsync(string userName);
 
-        Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(int userid);
+        Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(Guid userid);
 
     }
 }
