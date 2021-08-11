@@ -1,7 +1,14 @@
 # FastCore
 
 #### 介绍
-基于 AspNetCore 的后端接口快速开发框架，包含基本的认证授权、审计日志、EF集成、Swagger集成等功能模块
+
+**快速开发后端接口，将关注的聚焦于业务实现**
+
+
+**轻量简单、结构分明、开箱即用**
+
+
+基于 AspNetCore 的后端接口快速开发框架，包含基本的认证授权、审计日志、EFCore、Swagger、Redis、Hangfire 等功能模块。
 
 #### 软件架构
 软件架构说明
@@ -9,9 +16,37 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+安装前准备：
+
+1. Visual Studio 2019
+2. .NET5
+3. SQL Server 2014 及以上版本
+4. Redis
+
+运行前准备：
+
+1. 配置 `appsetting.json` 中数据库连接字符串
+2. `Hangfire` 需要先创建数据表，在 SQL Server 管理工具中执行 `CREATE DATABASE FastCore_Hangfire`
+3. 将 `extension` 目录下 `Application` 结尾的程序集编译，并将 `dll` 复制到 `FastCore` 可执行程序目录下
+
+默认地址：
+- Swagger 地址：http://localhost:5000/swagger
+- HealthCheck 地址：http://localhost:5000/healthchecks-ui
+- Hangfire 地址：http://localhost:5000/hangfire
+
+截图：
+
+![swagger](https://gitee.com/guan2h/fast-core/raw/master/doc/images/open-api.PNG)
+
+![healthchecks](https://gitee.com/guan2h/fast-core/raw/master/doc/images/healthchecks-ui.PNG)
+
+![hangfire_ui](https://gitee.com/guan2h/fast-core/raw/master/doc/images/hangfire_ui.PNG)
+
+![hangfire_task](https://gitee.com/guan2h/fast-core/raw/master/doc/images/hangfire_task.PNG)
+
+![get-token](https://gitee.com/guan2h/fast-core/raw/master/doc/images/get-token.PNG)
+
+![refresh-token](https://gitee.com/guan2h/fast-core/raw/master/doc/images/refresh-token.PNG)
 
 #### 使用说明
 
