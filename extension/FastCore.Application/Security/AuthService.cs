@@ -18,7 +18,7 @@ namespace FastCore.Application.Security
         private readonly FastCoreContext _dbContext;
         private readonly ITokenService _tokenService;
 
-        private TimeSpan _ts = new(7, 0, 0, 0, 0);
+        private TimeSpan _ts = new(24, 0, 0, 0);
 
         public AuthService(FastCoreContext dbContext, ITokenService tokenService, ICache cahce)
         {
@@ -27,12 +27,12 @@ namespace FastCore.Application.Security
             _cache = cahce;
         }
 
-        public async Task<ResultMsg<Data<UserInfoResp>>> GetUser(int userid)
+        public async Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(int userid)
         {
             throw new NotImplementedException();
         }
 
-        public ResultMsg<TokenResp> Login(LoginReq loginReq)
+        public async Task<ResultMsg<TokenResp>> GetTokenAsync(LoginReq loginReq)
         {
             if (loginReq == null)
                 return new ResultMsg<TokenResp>()
@@ -44,7 +44,14 @@ namespace FastCore.Application.Security
             //加密密码
             var user = _dbContext.FastUsers
                 .FirstOrDefault(u => (u.UserName == loginReq.UserName) &&
-                                        (u.Password == loginReq.Password));
+                                        (u.Password == Md5Helper.Encrypt(loginReq.Password)));
+
+            return await GetTokenByUserAsync(user);
+
+        }
+
+        private async Task<ResultMsg<TokenResp>> GetTokenByUserAsync(Model.FastUser user)
+        {
             if (user == null)
                 return new ResultMsg<TokenResp>()
                 {
@@ -55,7 +62,7 @@ namespace FastCore.Application.Security
             var claims = new List<Claim>
             {
                 new Claim(StringConstants.UserId, user.UserId.ToString()),
-                new Claim(StringConstants.UserName, loginReq.UserName),
+                new Claim(StringConstants.UserName, user.UserName),
                 //其它需要保存的信息
 
             };
@@ -63,7 +70,7 @@ namespace FastCore.Application.Security
             var accessToken = _tokenService.GenerateAccessToken(claims);
             var refreshToken = _tokenService.GenerateRefreshToken();
 
-            _cache.SetAsync($"{StringConstants.RToken}:{user.UserId}", refreshToken, _ts, _ts);
+            await _cache.SetAsync($"{StringConstants.RefreshToken}:{refreshToken}", user.UserId, _ts, _ts);
 
             return new ResultMsg<TokenResp>()
             {
@@ -74,18 +81,28 @@ namespace FastCore.Application.Security
                     refreshtoken = refreshToken
                 }
             };
-
         }
 
-        public ResultMsg<TokenResp> Refresh(TokenReq tokenReq)
+        public async Task<ResultMsg<TokenResp>> RefreshAsync(TokenReq tokenReq)
         {
-            throw new NotImplementedException();
+            var userId = await _cache.GetOrDefaultAsync($"{StringConstants.RefreshToken}:{tokenReq.refreshtoken}");
 
+            if (userId == null)
+                return new ResultMsg<TokenResp>()
+                {
+                    code = (int)StatusCode.Error,
+                    message = $"RefreshToken已过期"
+                };
+
+            await _cache.RemoveAsync($"{StringConstants.RefreshToken}:{tokenReq.refreshtoken}");
+            var user = await _dbContext.FastUsers.FindAsync(Guid.Parse(userId.ToString()));
+
+            return await GetTokenByUserAsync(user);
         }
 
-        public ResultMsg<bool> Revoke(string userName)
+        public async Task<ResultMsg<bool>> RevokeAsync(string userName)
         {
-            var user = _dbContext.FastUsers.SingleOrDefault(u => u.UserName == userName);
+            var user = _dbContext.FastUsers.FirstOrDefault(u => u.UserName == userName);
 
             if (user == null)
                 return new ResultMsg<bool>()
@@ -95,7 +112,8 @@ namespace FastCore.Application.Security
                 };
 
             //
-            _cache.Remove($"{StringConstants.RToken}:{user.UserId}");
+            await _cache.RemoveAsync($"{StringConstants.RefreshToken}:{user.UserId}");
+
             return new ResultMsg<bool>()
             {
                 code = (int)StatusCode.Success,

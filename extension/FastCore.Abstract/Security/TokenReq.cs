@@ -6,8 +6,6 @@ namespace FastCore.Abstract.Security
 {
     public class TokenReq
     {
-        public string accesstoken { get; set; }
-
         public string refreshtoken { get; set; }
     }
 }

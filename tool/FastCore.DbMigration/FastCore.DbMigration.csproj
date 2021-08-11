@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\FastCore.Base\FastCore.Base.csproj" />
     <ProjectReference Include="..\..\src\FastCore.Model\FastCore.Model.csproj" />
   </ItemGroup>
 

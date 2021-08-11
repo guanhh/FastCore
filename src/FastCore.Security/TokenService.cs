@@ -30,9 +30,10 @@ namespace FastCore.Security
                 expires: DateTime.Now.AddSeconds(_options.Expires),
                 signingCredentials: signinCredentials
             );
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-            return tokenString;
+
+            return new JwtSecurityTokenHandler().WriteToken(tokeOptions);
         }
+
         public string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -42,6 +43,7 @@ namespace FastCore.Security
                 return Convert.ToBase64String(randomNumber);
             }
         }
+
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
             var tokenValidationParameters = new TokenValidationParameters

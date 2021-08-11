@@ -5,13 +5,13 @@ namespace FastCore.Abstract.Security
 {
     public interface IAuthService
     {
-        ResultMsg<TokenResp> Login(LoginReq loginReq);
+        Task<ResultMsg<TokenResp>> GetTokenAsync(LoginReq loginReq);
 
-        ResultMsg<TokenResp> Refresh(TokenReq tokenReq);
+        Task<ResultMsg<TokenResp>> RefreshAsync(TokenReq tokenReq);
 
-        ResultMsg<bool> Revoke(string userName);
+        Task<ResultMsg<bool>> RevokeAsync(string userName);
 
-        Task<ResultMsg<Data<UserInfoResp>>> GetUser(int userid);
+        Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync(int userid);
 
     }
 }

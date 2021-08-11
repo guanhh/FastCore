@@ -1,4 +1,5 @@
-﻿using FastCore.EFCore.SqlServer;
+﻿using FastCore.DbMigration;
+using FastCore.EFCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -21,8 +22,11 @@ namespace FastCore.DbMigrations
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             var context = _serviceProvider.GetService(typeof(FastCoreContext));
-            await (context as FastCoreContext).Database.MigrateAsync(cancellationToken: cancellationToken);
 
+            var fcContext = context as FastCoreContext;
+            await fcContext.Database.MigrateAsync(cancellationToken: cancellationToken);
+
+            DbInitializer.Seed(fcContext);
             _logger.LogInformation("迁移完成！！！按任意键继续...");
         }
 

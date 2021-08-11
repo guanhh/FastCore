@@ -25,10 +25,10 @@ namespace FastCore.Controllers
         /// <param name="loginReq"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("login")]
-        public ResultMsg<TokenResp> Login([FromBody] LoginReq loginReq)
+        [Route("gettoken")]
+        public async Task<ResultMsg<TokenResp>> GetTokenAsync([FromBody] LoginReq loginReq)
         {
-            return _authService.Login(loginReq);
+            return await _authService.GetTokenAsync(loginReq);
         }
 
         /// <summary>
@@ -38,9 +38,9 @@ namespace FastCore.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("refresh")]
-        public ResultMsg<TokenResp> Refresh(TokenReq tokenReq)
+        public async Task<ResultMsg<TokenResp>> RefreshAsync(TokenReq tokenReq)
         {
-            return _authService.Refresh(tokenReq);
+            return await _authService.RefreshAsync(tokenReq);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace FastCore.Controllers
         /// <returns></returns>
         [HttpPost, Authorize]
         [Route("revoke")]
-        public ResultMsg<bool> Revoke()
+        public async Task<ResultMsg<bool>> RevokeAsync()
         {
-            return _authService.Revoke(User.Identity.Name);
+            return await _authService.RevokeAsync(User.Identity.Name);
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace FastCore.Controllers
         /// <returns></returns>
         [HttpGet, Authorize]
         [Route("userinfo")]
-        public async Task<ResultMsg<Data<UserInfoResp>>> GetUser()
+        public async Task<ResultMsg<Data<UserInfoResp>>> GetUserAsync()
         {
-            return await _authService.GetUser(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            return await _authService.GetUserAsync(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
         }
 
 
