@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace FastCore.Extension
 {
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
         public static void AddExtensionService(this IServiceCollection services, IConfiguration configuration)
         {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 
 namespace FastCore.Feature
 {
-    public static class ApplicationBuilderExtension
+    public static class ApplicationBuilderExtensions
     {
 
         public static void UseFastCoreFeature(this IApplicationBuilder app)

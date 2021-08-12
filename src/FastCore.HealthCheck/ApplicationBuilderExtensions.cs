@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FastCore.HealthCheck
 {
-    public static class ApplicationBuilderExtension
+    public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseHealthChecksCore(this IApplicationBuilder app)
         {

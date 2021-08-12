@@ -4,7 +4,7 @@ using System;
 
 namespace FastCore.Hangfire
 {
-    public static class ApplicationBuilderExtension
+    public static class ApplicationBuilderExtensions
     {
         public static void UseHangfire(this IApplicationBuilder app)
         {

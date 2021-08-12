@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FastCore.EFCore.SqlServer
 {
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
         public static void AddSqlServer(this IServiceCollection services, IConfiguration Configuration)
         {

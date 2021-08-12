@@ -6,7 +6,7 @@ using System;
 
 namespace FastCore.Hangfire
 {
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
 
         public static void ConfigureHangfire(this IServiceCollection services, IConfiguration Configuration)

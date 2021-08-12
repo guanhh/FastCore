@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FastCore.Feature
 {
-    public static class ServiceCollectionExtension
+    public static class ServiceCollectionExtensions
     {
 
         public static void AddFastCoreFeatureService(this IServiceCollection services, IConfiguration configuration)
