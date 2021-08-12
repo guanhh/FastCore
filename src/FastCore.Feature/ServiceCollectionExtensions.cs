@@ -38,6 +38,9 @@ namespace FastCore.Feature
             //hangfire
             services.ConfigureHangfire(configuration);
 
+            //healthcheck
+            services.AddHealthCheckService(configuration);
+
         }
 
 
